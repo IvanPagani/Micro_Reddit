@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy
   
-  validates :title, presence: true, length: { maximum: 50 }
-  validates :body, presence: true, length: { minimum: 10 }
+  validates :title, presence: true, length: { minimum: 2, maximum: 50 }
+  validates :body, presence: true, length: { minimum: 10, maxumum: 1000 }
 end
